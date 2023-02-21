@@ -4,7 +4,7 @@ const desktopMenu = $('.desktop-menu');
 const iconMenuMobile = $('.menu');
 const mobileMenu = $('.mobile-menu');
 const aside=$('.navbar-shopping-cart')
-const asideCarrito=$('.product-detail')
+const shoppingCartContainer=$('#shoppingCartContainer')
 const cardsContainer=$('.cards-container')
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
@@ -18,7 +18,7 @@ function toggleDesktopMenu(){//2 SOLUCIONES
     asideCarrito.classList.add('inactive');
   } */
   mobileMenu.classList.add('inactive');
-  asideCarrito.classList.add('inactive');
+  shoppingCartContainer.classList.add('inactive');
         desktopMenu.classList.toggle('inactive');//Funcion palanca que activa una clase de css en el html
 }
 
@@ -29,7 +29,7 @@ function toggleMobileMenu(){//2 SOLUCIONES
     asideCarrito.classList.add('inactive'); 
   } */
   desktopMenu.classList.add('inactive');
-    asideCarrito.classList.add('inactive');
+  shoppingCartContainer.classList.add('inactive');
     mobileMenu.classList.toggle('inactive');//Funcion palanca que activa una clase de css en el html
 }
 
@@ -41,7 +41,7 @@ function toggleCarritoAside(){//2 SOLUCIONES
   }  */
      desktopMenu.classList.add('inactive');
   mobileMenu.classList.add('inactive');
-    asideCarrito.classList.toggle('inactive')
+   shoppingCartContainer.classList.toggle('inactive')
 }
 
 const productList = [];

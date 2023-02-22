@@ -5,21 +5,26 @@ const iconMenuMobile = $('.menu');
 const mobileMenu = $('.mobile-menu');
 const aside=$('.navbar-shopping-cart')
 const shoppingCartContainer=$('#shoppingCartContainer')
-const cardsContainer=$('.cards-container')
+const cardsContainer=$('.cards-container');
+const productDetailCloseIcon=$('.product-detail-close');
+const productDetailContainer =$('#productDetail');
+
 
 menuEmail.addEventListener('click',toggleDesktopMenu);
 iconMenuMobile.addEventListener('click',toggleMobileMenu);
 aside.addEventListener('click',toggleCarritoAside);
-
+productDetailContainer.addEventListener('click', closeProductDetail)
 function toggleDesktopMenu(){//2 SOLUCIONES
    /*  const isAsideCarritoClosed = asideCarrito.classList.contains('inactive');
 
   if (!isAsideCarritoClosed) {
     asideCarrito.classList.add('inactive');
   } */
+  desktopMenu.classList.toggle('inactive');//Funcion palanca que activa una clase de css en el html
   mobileMenu.classList.add('inactive');
+  productDetailContainer.classList.add('inactive');
   shoppingCartContainer.classList.add('inactive');
-        desktopMenu.classList.toggle('inactive');//Funcion palanca que activa una clase de css en el html
+  
 }
 
 function toggleMobileMenu(){//2 SOLUCIONES
@@ -28,9 +33,10 @@ function toggleMobileMenu(){//2 SOLUCIONES
   if (!isAsideCarritoClosed) {
     asideCarrito.classList.add('inactive'); 
   } */
-  desktopMenu.classList.add('inactive');
+  mobileMenu.classList.toggle('inactive');//Funcion palanca que activa una clase de css en el html
   shoppingCartContainer.classList.add('inactive');
-    mobileMenu.classList.toggle('inactive');//Funcion palanca que activa una clase de css en el html
+  desktopMenu.classList.add('inactive');
+  productDetailContainer.classList.add('inactive');
 }
 
 function toggleCarritoAside(){//2 SOLUCIONES
@@ -39,11 +45,19 @@ function toggleCarritoAside(){//2 SOLUCIONES
   if (!isMobileMenuClosed) {
     mobileMenu.classList.add('inactive'); 
   }  */
+  shoppingCartContainer.classList.toggle('inactive')
+  productDetailContainer.classList.add('inactive');
      desktopMenu.classList.add('inactive');
   mobileMenu.classList.add('inactive');
-   shoppingCartContainer.classList.toggle('inactive')
 }
-
+function openProductDetailAside(){
+  shoppingCartContainer.classList.add('inactive')
+  desktopMenu.classList.add('inactive');
+  productDetailContainer.classList.remove('inactive');
+}
+function closeProductDetail(){
+  productDetailContainer.classList.add('inactive');
+}
 const productList = [];
 productList.push({
   name: 'Bike',
@@ -84,6 +98,7 @@ function renderProducts(arr) {
     // product= {name, price, image} -> product.image
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
+    productImg.addEventListener('click',openProductDetailAside)
   
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
